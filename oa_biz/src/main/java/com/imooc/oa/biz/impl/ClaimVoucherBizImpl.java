@@ -13,7 +13,6 @@ import com.imooc.oa.global.Contant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 @Service("cliamVoucherBiz")
@@ -79,7 +78,7 @@ public class ClaimVoucherBizImpl implements ClaimVoucherBiz {
         }
         for(ClaimVoucherItem item:items){
             item.setClaimVoucherId(claimVoucher.getId());
-            if(item.getId()>0){
+            if(item.getId() != null && item.getId()>0){
                 claimVoucherItemDao.update(item);
             }else{
                 claimVoucherItemDao.insert(item);
